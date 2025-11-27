@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { CirclePlus, Home } from "lucide-react";
-import ModalSubmitNew from "./ModalSubmitNew";
 
 function NavIcon({
   icon,
