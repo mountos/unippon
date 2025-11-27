@@ -18,7 +18,8 @@ export default function ListWebsites() {
       ) {
         return false;
       }
-      if (!website.title.toLowerCase().includes(search)) return false;
+      // 注意：這裡使用 website.title 進行搜尋
+      if (!website.title.toLowerCase().includes(search.toLowerCase())) return false; 
       return true;
     });
   }, [search, tags]);
@@ -51,7 +52,8 @@ export default function ListWebsites() {
                 className="aspect-square w-full rounded object-cover"
               />
             </div>
-            <p className="flex-1 text-sm font-semibold">{website.title}</p>
+            {/* *** 標題已修改為 text-lg 並限制兩行 *** */}
+            <p className="flex-1 text-lg font-semibold line-clamp-2">{website.title}</p>
           </div>
           <div className="flex flex-1 flex-col justify-between gap-2">
             <div className="flex flex-col gap-1">
