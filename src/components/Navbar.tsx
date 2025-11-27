@@ -51,11 +51,11 @@ function NavIcon({
 
 export default function Navbar() {
   // 將提交連結設定為您提供的短網址
-  const SUBMIT_URL = "https://mounx.com/s/unipponnewsite";
+  const SUBMIT_URL = "https://mountos.com/contact";
 
   // 請替換成您自己的連結
-  const YOUR_GITHUB_REPO = "https://github.com/YourUsername/unippon"; 
-  const YOUR_SPONSOR_LINK = "https://buymeacoffee.com/YourUsername"; 
+  const YOUR_GITHUB_REPO = "https://github.com/mountos"; 
+  const YOUR_SPONSOR_LINK = "https://buymeacoffee.com/mountos"; 
   
   return (
     <TooltipProvider>
