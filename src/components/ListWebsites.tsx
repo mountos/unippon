@@ -18,8 +18,7 @@ export default function ListWebsites() {
       ) {
         return false;
       }
-      // 注意：這裡使用 website.title 進行搜尋
-      if (!website.title.toLowerCase().includes(search.toLowerCase())) return false; 
+      if (!website.title.toLowerCase().includes(search.toLowerCase())) return false;
       return true;
     });
   }, [search, tags]);
@@ -40,6 +39,8 @@ export default function ListWebsites() {
           )}
           href={website.url}
           target="_blank"
+          // *** SEO 安全性修改：新增 rel 屬性 ***
+          rel="nofollow noopener noreferrer"
         >
           <div className="flex gap-2">
             <div className="h-12 w-12 bg-muted p-2">
@@ -52,7 +53,7 @@ export default function ListWebsites() {
                 className="aspect-square w-full rounded object-cover"
               />
             </div>
-            {/* *** 標題已修改為 text-lg 並限制兩行 *** */}
+            {/* 標題已修改為 text-lg 並限制兩行 */}
             <p className="flex-1 text-lg font-semibold line-clamp-2">{website.title}</p>
           </div>
           <div className="flex flex-1 flex-col justify-between gap-2">
@@ -62,7 +63,7 @@ export default function ListWebsites() {
               </p>
               <div className="flex flex-wrap gap-1">
                 {website.tags.map((tag) => (
-                  <Badge className="px-1 py-0">{tag}</Badge>
+                  <Badge className="px-1 py-0" key={tag}>{tag}</Badge>
                 ))}
               </div>
             </div>
