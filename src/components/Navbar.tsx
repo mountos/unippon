@@ -79,7 +79,7 @@ export default function Navbar() {
               </svg>
             }
             tooltip="Source code of this website theme"
-            href="https://github.com/lukenguyen-me/astro-template-directory-website"
+            href="https://github.com/mountos"
             target="_blank"
           />
           <NavIcon
