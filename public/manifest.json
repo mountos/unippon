@@ -1,0 +1,18 @@
+{
+  "name": "悠遊日本 | 最全面的日本旅遊資源彙整",
+  "short_name": "悠遊日本 | 最全面的日本旅遊資源彙整",
+  "description": "「悠遊日本」為您精選最全面的日本旅遊景點、官方觀光資訊、必備入境手續、交通鐵路 JR Pass 購買指南與氣象防災資訊。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

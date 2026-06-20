@@ -1,4 +1,5 @@
 ---
+import PWAInstallPrompt from '../components/PWAInstallPrompt.astro';
 import { cn } from "@/lib/utils";
 
 const title = "悠遊日本 | 最全面的日本旅遊資源彙整";
@@ -69,8 +70,28 @@ const image = "/public/preview.webp";
         });
       }
     </script>
+    <!-- PWA Meta & Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#dc2626" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content={title} />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- Register Service Worker -->
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('PWA Service Worker registered:', reg.scope))
+            .catch(err => console.error('PWA Service Worker registration failed:', err));
+        });
+      }
+    </script>
   </head>
   <body class={cn("bg-background font-sans text-primary")}>
     <slot />
-  </body>
+  	<PWAInstallPrompt />
+	</body>
 </html>
