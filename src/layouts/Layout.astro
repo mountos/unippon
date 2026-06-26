@@ -2,14 +2,16 @@
 import PWAInstallPrompt from '../components/PWAInstallPrompt.astro';
 import { cn } from "@/lib/utils";
 
-const title = "悠遊日本 | 最全面的日本旅遊資源彙整";
-const description = "「悠遊日本」為您精選最全面的日本旅遊景點、官方觀光資訊、必備入境手續、交通鐵路 JR Pass 購買指南與氣象防災資訊。";
+const { title = "悠遊日本 | 最全面的日本旅遊資源彙整", description = "「悠遊日本」為您精選最全面的日本旅遊景點、官方觀光資訊、必備入境手續、交通鐵路 JR Pass 購買指南與氣象防災資訊。" } = Astro.props;
+
 const url = "https://unippon.com";
 const image = "/public/preview.webp";
+const lang = Astro.url.pathname.startsWith('/zh-cn') ? 'zh-cn' : 'zh-tw';
+
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

@@ -9,58 +9,62 @@ import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { Globe } from "lucide-react";
 const lang = Astro.url.pathname.startsWith('/zh-cn') ? 'zh-cn' : 'zh-tw';
+import { toSimplifiedObj } from '@/utils/cc';
+import dataWebsites from '@/data/websites.json';
+const simplifiedWebsites = toSimplifiedObj(dataWebsites);
+
 
 ---
 
-<Layout>
+<Layout title="悠游日本 | 最全面的日本旅游资源汇总" description="「悠游日本」为您精选最全面的日本旅游景点、官方观光资讯、必备入境手续、交通铁路 JR Pass 购买指南与气象防灾资讯。">
   <main class="flex min-h-screen flex-col">
-    {/* 導航欄 - 保留客戶端載入，用於互動功能 */}
+    {/* 导航栏 - 保留客户端载入，用于互动功能 */}
     <Navbar client:load />
 
-    {/* 網站主要標題與搜尋欄區塊 */}
+    {/* 网站主要标题与搜寻栏区块 */}
     <section
       class="container z-10 mx-auto -mb-32 flex max-w-6xl flex-col px-4 py-16 md:px-8"
     >
       <div class="flex flex-col items-end gap-8 md:flex-row md:gap-16">
         <div class="col-span-2 flex flex-1 flex-col">
-          {/* *** 修改點 1: 網站主標題替換為「悠遊日本」主題 *** */}
+          {/* *** 修改点 1: 网站主标题替换为「悠游日本」主题 *** */}
           <h1 class="mb-6 text-4xl leading-tight">
-            <strong>悠遊日本</strong><br />
-            <span class="font-light">最全面的日本旅遊資源彙整</span>
+            <strong>悠游日本</strong><br />
+            <span class="font-light">最全面的日本旅游资源汇整</span>
           </h1>
-          {/* 搜尋元件 - 用於搜尋景點或交通資訊 */}
+          {/* 搜寻元件 - 用于搜寻景点或交通资讯 */}
           <Search client:load className="w-full" />
         </div>
         
-        {/* 特色景點宣傳 Banner 區塊 */}
+        {/* 特色景点宣传 Banner 区块 */}
         <div
           class="flex aspect-video w-96 max-w-full items-center justify-center rounded border border-dashed bg-background shadow"
         >
-          {/* *** 修改點 2: Banner 佔位文字替換為「特色景點」相關 *** */}
+          {/* *** 修改点 2: Banner 占位文字替换为「特色景点」相关 *** */}
           <span class="font-light text-muted-foreground"
-            >特色景點/當季活動宣傳</span
+            >特色景点/当季活动宣传</span
           >
         </div>
       </div>
     </section>
 
-    {/* 漸層連接區塊 - 保留樣式 */}
+    {/* 渐层连接区块 - 保留样式 */}
     <section
       class="to-red h-32 bg-gradient-to-b from-white to-muted dark:from-black dark:to-muted"
     >
     </section>
 
-    {/* 標籤/分類列表區塊 - 用於顯示景點、交通、美食等分類標籤 */}
+    {/* 标签/分类列表区块 - 用于显示景点、交通、美食等分类标签 */}
     <section class={cn("flex-1 bg-muted")}>
-      <ListTags client:load />
+      <ListTags client:load websites={simplifiedWebsites} />
     </section>
 
-    {/* 網站/資源列表區塊 - 顯示實際的旅遊資源條目（資料來自 websites.json） */}
+    {/* 网站/资源列表区块 - 显示实际的旅游资源条目（资料来自 websites.json） */}
     <section class={cn("flex-1 bg-muted pb-4 md:pb-12")}>
-      <ListWebsites client:load />
+      <ListWebsites client:load websites={simplifiedWebsites} />
     </section>
 
-    {/* 頁腳 - 保留原作者資訊 */}
+    {/* 页脚 - 保留原作者资讯 */}
     <footer class="pb-32 pt-4 md:pb-8 md:pt-8">
       <div class="container mx-auto px-4 text-sm md:px-0">
         <div
@@ -73,10 +77,10 @@ const lang = Astro.url.pathname.startsWith('/zh-cn') ? 'zh-cn' : 'zh-tw';
               target="_blank">mountos Institute</a
             > All Rights Reserved.
           </p>
-          {/* 保留社交媒體連結 */}
+          {/* 保留社交媒体连结 */}
           
           <div class="flex items-center gap-4 text-xs">
-            <a href="/" class={lang === 'zh-tw' ? 'font-bold underline' : 'underline'}>繁體中文</a>
+            <a href="/" class={lang === 'zh-tw' ? 'font-bold underline' : 'underline'}>繁体中文</a>
             <span class="text-muted-foreground">|</span>
             <a href="/zh-cn/" class={lang === 'zh-cn' ? 'font-bold underline' : 'underline'}>简体中文</a>
           </div>

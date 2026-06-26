@@ -6,12 +6,13 @@ import { X } from "lucide-react";
 import { useMemo } from "react";
 import { Button } from "./ui/button";
 
-export default function ListTags() {
+export default function ListTags({ websites }: { websites?: typeof dataWebsites }) {
+  const finalWebsites = websites || dataWebsites;
   const selectedTags: string[] = useStore(filteredTags);
 
   const tags = useMemo(() => {
     const tags = new Set<string>();
-    dataWebsites.forEach((website) => {
+    finalWebsites.forEach((website) => {
       website.tags.forEach((tag) => tags.add(tag));
     });
     return Array.from(tags).sort((a, b) => a.localeCompare(b));

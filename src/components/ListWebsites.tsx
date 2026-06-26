@@ -5,13 +5,14 @@ import { filteredTags, searchKeyword } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useMemo } from "react";
 
-export default function ListWebsites() {
+export default function ListWebsites({ websites }: { websites?: typeof dataWebsites }) {
+  const finalWebsites = websites || dataWebsites;
   const search = useStore(searchKeyword);
   const tags = useStore(filteredTags);
 
   const filteredWebsites = useMemo(() => {
-    if (!search && tags.length === 0) return dataWebsites;
-    return dataWebsites.filter((website) => {
+    if (!search && tags.length === 0) return finalWebsites;
+    return finalWebsites.filter((website) => {
       if (
         tags.length > 0 &&
         !tags.every((tag) => (website.tags as string[]).includes(tag))
