@@ -29,4 +29,4 @@ User-agent: meta-externalagent
 Disallow: /
 
 # Sitemap location for search engines
-Sitemap: https://unippon.com/sitemap.xml
+Sitemap: https://unippon.com/sitemap-index.xml
