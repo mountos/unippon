@@ -115,8 +115,7 @@ export default function Navbar() {
     </svg>
   }
   tooltip="提交日本旅遊網站連結"
-  href="https://mountos.com/contact"
-  target="_blank"
+  href="/contact"
 />
           <NavIcon
             icon={
