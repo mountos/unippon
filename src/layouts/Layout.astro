@@ -91,7 +91,19 @@ const lang = Astro.url.pathname.startsWith('/zh-cn') ? 'zh-cn' : 'zh-tw';
         });
       }
     </script>
-  </head>
+  		<script is:inline>
+			(function() {
+				var pathname = window.location.pathname;
+				var lastSegment = pathname.split('/').pop();
+				if (!lastSegment || !lastSegment.includes('.')) {
+					var lowerPath = pathname.toLowerCase();
+					if (pathname !== lowerPath) {
+						window.location.replace(lowerPath + window.location.search + window.location.hash);
+					}
+				}
+			})();
+		</script>
+	</head>
   <body class={cn("bg-background font-sans text-primary")}>
     <slot />
   	<PWAInstallPrompt />
